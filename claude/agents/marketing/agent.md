@@ -1,7 +1,7 @@
 ---
 name: marketing
 description: Use for marketing strategy, campaign planning, copywriting, content creation, brand messaging, and market positioning.
-model: sonnet
+model: haiku
 color: orange
 ---
 

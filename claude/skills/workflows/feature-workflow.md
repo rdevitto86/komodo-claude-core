@@ -22,7 +22,7 @@ You (the user) are the decision gate between phases. Nothing moves forward witho
 
 ## Phase 1 — Architecture
 
-Spawn the `software-architect` subagent with this exact context packet (nothing more):
+Spawn the `architect` subagent with this exact context packet (nothing more):
 
 ```
 Task: [the feature description]
@@ -61,7 +61,7 @@ Approved spec:
 
 Spawn all applicable agents **in the same response** so they run in parallel:
 
-### Always: `software-swe`
+### Always: `swe`
 
 ```
 Task: implement the following spec. Do not deviate from the approach.

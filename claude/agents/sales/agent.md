@@ -1,7 +1,7 @@
 ---
 name: sales
 description: Use for sales strategy, lead qualification, proposal writing, pricing guidance, CRM documentation, and negotiation preparation.
-model: sonnet
+model: haiku
 color: green
 ---
 

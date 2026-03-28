@@ -1,11 +1,11 @@
-# komodo-claude
+# komodo-claude-core
 
 Shared Claude Code configuration for all Komodo projects. Settings, skills, and agents live here and are symlinked into `~/.claude/` so every project inherits them automatically.
 
 ## Structure
 
 ```
-komodo-claude/
+komodo-claude-core/
 ├── claude/
 │   ├── settings.json   # Global permissions, plugins, allowed commands
 │   ├── skills/         # User-invocable skills (/new-service, /add-route, etc.)
@@ -74,19 +74,22 @@ Multi-agent orchestration with human checkpoints. Each agent runs in an isolated
 
 ## Agents
 
-| Agent | Description |
-|-------|-------------|
-| `admin-assistant` | Administrative tasks, communications, and document drafting |
-| `botanist` | Plant science, crop health diagnosis, and agricultural botany |
-| `customer-servicing` | Customer response drafting, ticket triage, and escalation support |
-| `electrical-engineer` | Circuit design, schematic review, PCB layout, and component selection |
-| `lawyer` | Contract review, compliance analysis, and legal research (not legal advice) |
-| `marketing` | Campaign strategy, copywriting, and brand messaging |
-| `robotics` | ROS 2 development, motion planning, and sensor integration |
-| `sales` | Lead qualification, proposal writing, and negotiation preparation |
-| `software-architect` | System design, ADRs, and architecture decisions for the Komodo platform |
-| `software-swe` | Go backend and SvelteKit frontend implementation in the Komodo codebase |
-| `warehouse-manager` | Warehouse operations, inventory control, and logistics planning |
+| Agent | Model | Description |
+|-------|-------|-------------|
+| `architect` | opus | Cross-business domain strategy and architecture — software, product, commercial, ops, org |
+| `swe` | sonnet | Senior/tech lead — implementation, code review, security, performance, CI/CD, maintainability |
+| `devops` | sonnet | CI/CD, infrastructure, deployments, monitoring, incident response |
+| `quality-assurance` | sonnet | Test planning, QA review, bug triage, release gates |
+| `electrical-engineer` | sonnet | Circuit design, schematic review, PCB layout, component selection |
+| `robotics` | sonnet | ROS 2 development, motion planning, sensor integration |
+| `mechatronics` | sonnet | Embedded firmware, actuator/sensor interfaces, hardware-software integration |
+| `project-manager` | sonnet | Task breakdown, sprint planning, delivery risk, stakeholder communication |
+| `lawyer` | opus | Contract review, compliance analysis, legal research (not legal advice) |
+| `botanist` | haiku | Plant science, crop health diagnosis, and agricultural botany |
+| `customer-servicing` | haiku | Customer response drafting, ticket triage, and escalation support |
+| `marketing` | haiku | Campaign strategy, copywriting, and brand messaging |
+| `sales` | haiku | Lead qualification, proposal writing, and negotiation preparation |
+| `warehouse-manager` | haiku | Warehouse operations, inventory control, and logistics planning |
 
 ## Project-level config
 

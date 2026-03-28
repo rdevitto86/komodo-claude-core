@@ -18,17 +18,20 @@ Read the task and select from this agent roster. Pick only agents where there is
 
 | Agent | Use when the task involves... |
 |-------|------------------------------|
-| `software-architect` | System design, architecture decisions, technical strategy |
-| `software-swe` | Code implementation, debugging, refactoring |
+| `architect` | Cross-domain strategy and architecture decisions — software, product, commercial, operations, org |
+| `swe` | Implementation, code review, debugging, refactoring, and technical leadership |
+| `project-manager` | Task breakdown, sprint planning, stakeholder updates, delivery risk |
+| `quality-assurance` | Test planning, QA review, bug triage, release gates |
+| `devops` | CI/CD, infrastructure, deployments, monitoring, incidents |
 | `electrical-engineer` | Circuit design, schematics, PCB, component selection |
-| `robotics` | ROS 2, motion planning, sensor integration |
+| `robotics` | ROS 2, motion planning, sensor integration, robot perception |
+| `mechatronics` | Embedded firmware, actuator/sensor interfaces, hardware-software integration |
 | `sales` | Proposals, lead qualification, pipeline, commercial terms |
 | `marketing` | Campaign copy, messaging, positioning, content |
 | `customer-servicing` | Customer responses, ticket triage, escalation drafts |
 | `lawyer` | Contracts, compliance, legal review |
 | `botanist` | Crop science, plant health, growing conditions |
 | `warehouse-manager` | Inventory, logistics, warehouse operations |
-| `admin-assistant` | Scheduling, communications, document drafting |
 
 If only one agent applies, just invoke that agent directly without the dispatch wrapper.
 

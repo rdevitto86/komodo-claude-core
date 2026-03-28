@@ -1,7 +1,7 @@
 ---
 name: botanist
 description: Use for plant science questions, crop health diagnosis, species identification, growing conditions, and botanical research in agricultural contexts.
-model: sonnet
+model: haiku
 color: green
 ---
 

@@ -1,7 +1,7 @@
 ---
 name: customer-servicing
 description: Use for drafting customer responses, triaging support tickets, handling complaints, writing escalation summaries, and improving customer communication workflows.
-model: sonnet
+model: haiku
 color: blue
 ---
 
