@@ -10,36 +10,48 @@ This is not a product codebase. It is the Claude Code configuration layer — ag
 
 ```
 claude/
-├── agents/          # Subagents Claude can spawn
+├── agents/          # Claude Code subagents (spawned via Agent tool)
+│                    # Local MCP agents live in ~/.komodo/bridge/ — not here
 ├── skills/          # User-invocable slash commands (/feature-workflow, /dispatch, etc.)
 ├── standards/       # Engineering and operational standards referenced by agents and skills
 ├── hooks/           # Shell scripts triggered automatically by Claude Code events
 └── settings.json    # Global permissions, allowed commands, plugins, hook registration
 ```
 
-## Agents
+## Claude Code agents
+
+Spawned by Claude via the `Agent` tool. Defined in `claude/agents/`.
 
 | Agent | Model | Role |
 |-------|-------|------|
 | `architect` | opus | Cross-business domain strategy and architecture — software is the primary lens, but covers product, commercial, ops, org, and legal at a strategic level. Chat-first, formalizes when settled. |
 | `swe` | sonnet | Senior/tech lead level — implementation, code review, debugging, refactoring, CI/CD, security, and performance. |
+| `swe-embedded` | sonnet | Embedded systems — RTOS, bare-metal C/C++, device drivers, cross-compilation, safety-critical firmware. |
 | `devops` | sonnet | CI/CD, infrastructure, deployments, monitoring, incident response. |
-| `quality-assurance` | sonnet | Test planning, QA review, bug triage, release gates. |
-| `electrical-engineer` | sonnet | Circuit design, schematic review, PCB layout, component selection. |
-| `robotics` | sonnet | ROS 2, motion planning, sensor integration, robot perception. |
+| `electronics` | sonnet | Circuit design, schematic review, PCB layout, power systems, component selection, EMC. |
 | `mechatronics` | sonnet | Embedded firmware, actuator/sensor interfaces, hardware-software integration. |
-| `project-manager` | sonnet | Task breakdown, sprint planning, delivery risk, stakeholder communication. |
-| `lawyer` | opus | Contract review, compliance, legal research. Not legal advice. |
 | `botanist` | haiku | Crop health, plant science, agricultural diagnosis. |
-| `customer-servicing` | haiku | Customer response drafting, ticket triage, escalation summaries. |
-| `marketing` | haiku | Campaign strategy, copywriting, brand messaging. |
-| `sales` | haiku | Lead qualification, proposals, negotiation, CRM. |
 | `warehouse-manager` | haiku | Inventory control, logistics, warehouse operations. |
 
 **Model tiers:**
 - `haiku` — simple/lookup/drafting tasks
 - `sonnet` — complex technical work (default)
-- `opus` — highest reasoning demand (architecture, legal)
+- `opus` — highest reasoning demand (architecture)
+
+## Local MCP agents
+
+Run on Qwen3 via the komodo bridge (`~/.komodo/bridge`). Served at `http://localhost:8000/sse`. Start with `docker compose up -d` in `~/.komodo/`.
+
+These are invoked as MCP tools, not Claude subagents — they run fully outside Claude's context window.
+
+| Agent | MCP tool | Role |
+|-------|----------|------|
+| `pm` | `analyze_specs` | Task breakdown, sprint planning, delivery risk, stakeholder communication. |
+| `qa` | `generate_test_cases` | Test planning, QA review, bug triage, release gates. |
+| `lawyer` | `review_document` | Contract review, compliance, legal research. Not legal advice. |
+| `customer-servicing` | `draft_response` | Customer response drafting, ticket triage, escalation summaries. |
+| `marketing` | `create_content` | Campaign strategy, copywriting, brand messaging. |
+| `sales` | `draft_sales_content` | Lead qualification, proposals, negotiation, CRM. |
 
 ## Key skills
 
