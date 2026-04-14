@@ -22,21 +22,30 @@ claude/
 
 Spawned by Claude via the `Agent` tool. Defined in `claude/agents/`.
 
-| Agent | Model | Role |
-|-------|-------|------|
-| `architect` | opus | Cross-business domain strategy and architecture — software is the primary lens, but covers product, commercial, ops, org, and legal at a strategic level. Chat-first, formalizes when settled. |
-| `swe` | sonnet | Senior/tech lead level — implementation, code review, debugging, refactoring, CI/CD, security, and performance. |
-| `swe-embedded` | sonnet | Embedded systems — RTOS, bare-metal C/C++, device drivers, cross-compilation, safety-critical firmware. |
-| `devops` | sonnet | CI/CD, infrastructure, deployments, monitoring, incident response. |
-| `electronics` | sonnet | Circuit design, schematic review, PCB layout, power systems, component selection, EMC. |
-| `mechatronics` | sonnet | Embedded firmware, actuator/sensor interfaces, hardware-software integration. |
-| `botanist` | haiku | Crop health, plant science, agricultural diagnosis. |
-| `warehouse-manager` | haiku | Inventory control, logistics, warehouse operations. |
+**Default: the `advisor` agent is the entry point for everything.** It is the consigliere and orchestrator — gathers context (user → MCP agents → Claude agents), delegates work autonomously, and insulates the user from operational noise. The user focuses on high-level decisions, external relationships, and core work. The advisor handles the rest.
+
+| Trigger | Agent | Model | Role |
+|---------|-------|-------|------|
+| `[ADV]` | `advisor` | sonnet | **Default. Consigliere and orchestrator** — advises on strategy/technical/business, auto-dispatches specialist agents, only surfaces decisions that are consequential. |
+| `[ARCH]` | `architect` | opus | Cross-business domain strategy — software, product, commercial, ops, legal. Escalated to by the advisor for formal architecture decisions. |
+| `[SWE]` | `swe` | sonnet | Implementation, code review, debugging, refactoring, CI/CD, security, performance. |
+| `[TEST]` | `swe-test` | sonnet | Focused test writing for a single file/component. Fallback — prefer MCP `qa` agent. |
+| `[OPS]` | `devops` | sonnet | CI/CD, infrastructure, deployments, monitoring, incident response. |
+| `[EMB]` | `swe-embedded` | sonnet | Embedded systems — RTOS, bare-metal C/C++, device drivers, safety-critical firmware. |
+| `[EE]` | `electronics` | sonnet | Circuit design, schematic review, PCB layout, power systems, component selection, EMC. |
+| `[MECH]` | `mechatronics` | sonnet | Embedded firmware, actuator/sensor interfaces, hardware-software integration. |
+| `[BOT]` | `botanist` | haiku | Crop health, plant science, agricultural diagnosis. |
+| `[WM]` | `warehouse-manager` | haiku | Inventory control, logistics, warehouse operations. |
 
 **Model tiers:**
 - `haiku` — simple/lookup/drafting tasks
 - `sonnet` — complex technical work (default)
 - `opus` — highest reasoning demand (architecture)
+
+**Invoking agents:**
+- **Shorthand prefix:** start your message with the trigger (e.g. `[SWE] add pagination to the orders endpoint`)
+- **Natural language:** "use the swe agent to...", "have the advisor look at..."
+- **Skills:** `/dispatch` for parallel multi-agent routing, `/feature-workflow` for structured design → implementation flow
 
 ## Local MCP agents
 
@@ -78,9 +87,11 @@ Engineering and operational standards in `claude/standards/`. Agents reference t
 | `pull-requests.md` | PR size, descriptions, review duties, merge criteria |
 | `api-design.md` | URL conventions, HTTP methods, status codes, versioning, OpenAPI |
 | `go.md` | Formatting, error handling, naming, testing, concurrency |
-| `typescript.md` | Type safety, naming, async patterns, module conventions, testing |
+| `typescript.md` | Type safety, naming, async patterns, module conventions |
+| `testing.md` | JS/TS test file naming (`.x.test.ts`), colocation, single-file structure, SvelteKit and Vue conventions |
 | `sql.md` | Schema conventions, migrations, indexing, query safety |
 | `logging.md` | Log levels, required fields, what never to log, correlation |
+| `token-efficiency.md` | MCP-first delegation, compaction cadence, lean context passing, model selection |
 
 ## Hooks (auto-run)
 

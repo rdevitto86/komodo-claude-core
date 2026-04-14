@@ -61,11 +61,13 @@ Base TypeScript/JavaScript coding standards for Komodo. Project-level configs ma
 
 ## 6. Testing
 
-- Unit tests with Vitest; test behavior, not implementation details
-- Mock at module boundaries only — don't mock internal functions of the module under test
-- E2E tests with Playwright for critical user flows (auth, checkout, key forms)
-- Avoid snapshot tests for logic — snapshot tests for UI components are acceptable if reviewed carefully
-- Test names describe behavior: `"returns 404 when order does not exist"` not `"test fetchOrder"`
+See `testing.md` for the full standard — file naming, colocation rules, single-file structure, and framework-specific conventions (SvelteKit, Vue).
+
+Summary:
+- Colocate tests with source; use the `.x.test.ts` naming convention
+- Unit, component, and integration tests live in one file organized by `describe` blocks
+- Mock at module boundaries only — never mock internals of the module under test
+- E2E tests (Playwright) live in `e2e/` at the project root — not colocated
 
 ---
 
